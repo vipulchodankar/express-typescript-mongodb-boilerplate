@@ -1,7 +1,7 @@
 import express, { Application } from "express";
 import Logger from "./lib/logger";
-import dotenv from "dotenv";
-import { PORT } from "./config/server";
+import { MONGO_URI, PORT } from "./config";
+import { connect } from "mongoose";
 
 // Middleware
 import morganMiddleware from "./middleware/morgan";
@@ -9,8 +9,14 @@ import { json, urlencoded } from "body-parser";
 
 // Routes
 import indexRouter from "./routes/index";
+import authRouter from "./routes/auth";
 
-dotenv.config();
+connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => Logger.info("MongoDB Connected"))
+  .catch((err) => Logger.error(err));
 
 const app: Application = express();
 
@@ -21,6 +27,7 @@ app.use(urlencoded({ extended: true }));
 
 // Routes
 app.use("/", indexRouter);
+app.use("/auth", authRouter);
 
 app.listen(PORT, () => {
   Logger.info(`Server running at http://localhost:${PORT}`);
