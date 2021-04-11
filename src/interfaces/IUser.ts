@@ -1,5 +1,4 @@
 import { IUser } from "../models/User";
-import {} from "jsonwebtoken";
 
 export interface IUserLoginInput {
   email: IUser["email"];
