@@ -38,7 +38,3 @@ export const loginUser = async (req: Request, res: Response) => {
     .status(200)
     .json({ user: returnedUser, message: "Successfully Logged In" });
 };
-
-export const getUser = async (req: Request, res: Response) => {
-  return res.json(req.user);
-};

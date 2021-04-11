@@ -6,7 +6,7 @@ export const PORT: number = parseInt(String(process.env.PORT)) || 6969;
 export const MONGO_URI: string = String(process.env.MONGO_URI);
 
 // Bcrypt
-export const saltRounds = 10;
+export const SALT_ROUNDS = 10;
 
 // JWT
 export const JWT_SIGNATURE: string =
