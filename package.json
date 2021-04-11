@@ -1,7 +1,7 @@
 {
-  "name": "server",
+  "name": "express-typescript-mongodb-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Template for express app with typescript and mongodb",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --config nodemon.json --exec 'ts-node -T' src/index.ts",
@@ -10,15 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/temp-todo/server.git"
+    "url": "git+https://github.com/vipulchodankar/express-typescript-mongodb-boilerplate.git"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "typescript",
+    "mongodb",
+    "boilerplate"
+  ],
   "author": "Vipul Chodankar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/temp-todo/server/issues"
+    "url": "https://github.com/vipulchodankar/express-typescript-mongodb-boilerplate/issues"
   },
-  "homepage": "https://github.com/temp-todo/server#readme",
+  "homepage": "https://github.com/vipulchodankar/express-typescript-mongodb-boilerplate#readme",
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.19.0",
