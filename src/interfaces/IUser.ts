@@ -1,4 +1,5 @@
 import { IUser } from "../models/User";
+import { Response } from "express";
 
 export interface IUserLoginInput {
   email: IUser["email"];
@@ -13,4 +14,8 @@ export interface ITokenData {
   _id: IUser["_id"];
   iat: string;
   exp: string;
+}
+
+export interface IaddAuthToRes {
+  (res: Response, accessToken: string, refreshToken: string): void;
 }

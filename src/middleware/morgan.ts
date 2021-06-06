@@ -1,5 +1,4 @@
 import morgan, { StreamOptions } from "morgan";
-
 import Logger from "../lib/logger";
 
 // Override the stream method by telling

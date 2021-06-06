@@ -1,8 +1,8 @@
 import { Router } from "express";
-import * as index from "../controllers/index";
+import * as controler from "../controllers";
 
 const indexRouter = Router();
 
-indexRouter.get("/", index.ping);
+indexRouter.get("/", controler.ping);
 
 export default indexRouter;

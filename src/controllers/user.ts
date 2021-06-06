@@ -6,7 +6,13 @@ import UserService from "../services/user";
 const UserServiceInstance = new UserService();
 
 export const getUser = async (req: Request, res: Response) => {
-  return res.status(200).json(req.user);
+  const { user, error, errorCode } = await UserServiceInstance.findById(
+    req.userId
+  );
+
+  if (error && errorCode) return res.status(errorCode).json({ error });
+
+  return res.status(200).json(user);
 };
 
 export const updateUser = async (req: Request, res: Response) => {
@@ -16,7 +22,7 @@ export const updateUser = async (req: Request, res: Response) => {
   const allowedData = userSchema.update.noUnknown().cast(data);
 
   const { user, error, errorCode } = await UserServiceInstance.update(
-    req.user?._id,
+    req.userId,
     allowedData
   );
 
@@ -26,7 +32,7 @@ export const updateUser = async (req: Request, res: Response) => {
 };
 
 export const deleteUser = async (req: Request, res: Response) => {
-  const { error, errorCode } = await UserServiceInstance.delete(req.user?._id);
+  const { error, errorCode } = await UserServiceInstance.delete(req.userId);
 
   if (error && errorCode) return res.status(errorCode).json({ error });
 
