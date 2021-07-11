@@ -13,10 +13,11 @@ import { IUser } from "../models/User";
 import UserService from "./user";
 
 const UserServiceInstance = new UserService();
+
 export default class AuthService {
   constructor() {}
 
-  generateAccessToken(user: IUser) {
+  generateAccessToken(user: Partial<IUser>) {
     const data = {
       _id: user._id,
     };
@@ -26,7 +27,7 @@ export default class AuthService {
     });
   }
 
-  private generateRefreshToken(user: IUser) {
+  private generateRefreshToken(user: Partial<IUser>) {
     const data = {
       _id: user._id,
     };
@@ -63,6 +64,8 @@ export default class AuthService {
       const accessToken = this.generateAccessToken(user);
       const refreshToken = this.generateRefreshToken(user);
 
+      //TODO: Add refresh token to DB/cache
+
       return { user, accessToken, refreshToken };
     } catch (error) {
       Logger.error(error);
@@ -89,6 +92,8 @@ export default class AuthService {
 
       const accessToken = this.generateAccessToken(user);
       const refreshToken = this.generateRefreshToken(user);
+
+      //TODO: Add refresh token to DB/cache
 
       return { user, accessToken, refreshToken };
     } catch (error) {

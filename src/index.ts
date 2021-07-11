@@ -1,4 +1,5 @@
 import { json, urlencoded } from "body-parser";
+import cookieParser from "cookie-parser";
 import express, { Application, ErrorRequestHandler } from "express";
 import { connect } from "mongoose";
 import { MONGO_OPTIONS, MONGO_URI, PORT } from "./config";
@@ -20,6 +21,7 @@ const app: Application = express();
 app.use(morganMiddleware);
 app.use(json());
 app.use(urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Routes
 app.use("/", indexRouter);
